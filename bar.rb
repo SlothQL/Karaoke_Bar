@@ -8,9 +8,13 @@ class Bar
     end
 
     def rent_room(room, guest)
-        room.check_in_guests(guest)
-        guest.pay_fee(room)
-        @till += room.entry_fee
+            phrase = room.check_in_guests(guest)
+            if (phrase == "I am sorry, but our room has only space for 3 people.")
+                return
+            else
+                guest.pay_fee(room)
+                @till += room.entry_fee
+            end
     end
 
 end
