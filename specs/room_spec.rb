@@ -45,15 +45,12 @@ class TestRoom < Minitest::Test
     def test_room_can_check_in_guest()
         @karaoke_room.check_in_guests(@guest1)
         assert_equal(1, @karaoke_room.count_guests())
-        #assert_equal(45, @guest1.money)
     end
 
     def test_room_can_check_in_two_guests()
         @karaoke_room.check_in_guests(@guest1)
         @karaoke_room.check_in_guests(@guest2)
         assert_equal(2, @karaoke_room.count_guests())
-        #assert_equal(45, @guest1.money)
-        #assert_equal(20, @guest2.money)
     end
 
     def test_room_hits_its_capacity()

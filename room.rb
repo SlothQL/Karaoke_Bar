@@ -18,13 +18,8 @@ class Room
         return @guests.count()
     end
 
-    def get_room_by_room_name
-
-    end
-
     def check_in_guests(guest)
         if @capacity > @guests.count()
-            #guest.pay_fee()
             return @guests.push(guest) 
         else 
             return "I am sorry, but our room has only space for #{@capacity} people." 
@@ -38,5 +33,5 @@ class Room
     def add_songs(song)
         return @playlist.push(song)
     end
-
+    
 end
