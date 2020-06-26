@@ -1,9 +1,10 @@
 class Room
 
-    attr_reader :playlist
+    attr_reader :playlist, :capacity
 
-    def initialize(playlist)
+    def initialize(playlist, capacity)
         @playlist = playlist
+        @capacity = capacity
         @guests = []
     end
 
@@ -16,7 +17,11 @@ class Room
     end
 
     def check_in_guests(guest)
-        return @guests.push(guest)
+        if @capacity > @guests.count
+            return @guests.push(guest) 
+        else 
+            return "I am sorry, but our room has only space for #{@capacity} people." 
+        end
     end
 
     def check_out_guests(guest)
