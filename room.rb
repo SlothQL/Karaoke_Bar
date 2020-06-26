@@ -23,4 +23,8 @@ class Room
         return @guests.delete(guest)
     end
 
+    def add_songs(song)
+        return @playlist.push(song)
+    end
+
 end

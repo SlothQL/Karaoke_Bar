@@ -15,6 +15,7 @@ class TestRoom < Minitest::Test
         @song2 = Song.new("Rick Astley", "Never gonna give you up")
         @song3 = Song.new("Incubus", "Wish you were here")
         @song4 = Song.new("Blink182", "Aliens exist")
+        @song5 = Song.new("Eagles of Death Metal", "Wannabe in L.A.")
         @playlist = [@song1, @song2, @song3, @song4]
         @karaoke_room = Room.new(@playlist)
     end
@@ -43,6 +44,11 @@ class TestRoom < Minitest::Test
         @karaoke_room.check_in_guests(@guest2)
         @karaoke_room.check_out_guests(@guest1)
         assert_equal(1, @karaoke_room.count_guests())
+    end
+
+    def test_room_can_add_song()
+        @karaoke_room.add_songs(@song5)
+        assert_equal(5, @karaoke_room.count_songs())
     end
 
 end
