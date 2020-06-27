@@ -53,17 +53,7 @@ class TestRoom < Minitest::Test
         @karaoke_room.check_in_guests(@guest2)
         assert_equal(2, @karaoke_room.count_guests())
     end
-
-    def test_room_hits_its_capacity()
-        @karaoke_room.check_in_guests(@guest1)
-        @karaoke_room.check_in_guests(@guest2)
-        @karaoke_room.check_in_guests(@guest3)
-        phrase = @karaoke_room.check_in_guests(@guest4)
-        assert_equal(3, @karaoke_room.count_guests())
-        assert_equal("I am sorry, but our room has only space for 3 people.", phrase)
-    end
     
-
     def test_room_can_check_out_guest()
         @karaoke_room.check_in_guests(@guest1)
         @karaoke_room.check_in_guests(@guest2)

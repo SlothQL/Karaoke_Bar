@@ -7,14 +7,22 @@ class Bar
         @till = till
     end
 
+    def guest_cannot_pay_fee(room, guest)
+        return !guest.enough_money?(room)
+    end
+
+    def room_has_space?(room)
+        return room.capacity > room.count_guests()
+    end
+
     def rent_room(room, guest)
-            phrase = room.check_in_guests(guest)
-            if (phrase == "I am sorry, but our room has only space for 3 people.")
-                return
-            else
-                guest.pay_fee(room)
-                @till += room.entry_fee
-            end
+        return if guest_cannot_pay_fee(room, guest)
+        return if !room_has_space?(room)
+        if (room_has_space?(room))
+            guest.pay_fee(room)
+            @till += room.entry_fee
+            room.check_in_guests(guest) 
+        end
     end
 
 end

@@ -14,6 +14,7 @@ class TestBar < Minitest::Test
         @guest2 = Guest.new("Alina", 32, 25)
         @guest3 = Guest.new("Julien", 29, 9)
         @guest4 = Guest.new("Dani", 29, 17)
+        @guest5 = Guest.new("Johanna", 24, 3)
         @song1 = Song.new("Foo Fighters", "Everlong")
         @song2 = Song.new("Rick Astley", "Never gonna give you up")
         @song3 = Song.new("Incubus", "Wish you were here")
@@ -38,6 +39,14 @@ class TestBar < Minitest::Test
         assert_equal(20, @guest2.money)
     end
 
+    def test_guest_cannot_rent_room()
+        poor_guest = @bar.rent_room(@karaoke_room, @guest5)
+        assert_nil(nil, poor_guest)
+        assert_equal(1000, @bar.till)
+        assert_equal(3, @guest5.money)
+        assert_equal(0, @karaoke_room.count_guests())
+    end
+
     def test_bar_rents_room_full_capacity()
         @bar.rent_room(@karaoke_room, @guest1)
         @bar.rent_room(@karaoke_room, @guest2)
@@ -51,6 +60,5 @@ class TestBar < Minitest::Test
         assert_equal(4, @guest3.money)
         assert_equal(17, @guest4.money)
     end
-
 
 end

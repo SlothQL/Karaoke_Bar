@@ -19,11 +19,7 @@ class Room
     end
 
     def check_in_guests(guest)
-        if @capacity > @guests.count()
-            return @guests.push(guest) 
-        else 
-            return "I am sorry, but our room has only space for #{@capacity} people." 
-        end
+        return @guests.push(guest)
     end
 
     def check_out_guests(guest)
