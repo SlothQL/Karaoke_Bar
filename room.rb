@@ -29,5 +29,9 @@ class Room
     def add_songs(song)
         return @playlist.push(song)
     end
+
+    def is_song_in_playlist?(song)
+        return @playlist.include?(song)
+    end
     
 end

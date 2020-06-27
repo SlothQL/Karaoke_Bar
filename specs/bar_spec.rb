@@ -10,17 +10,24 @@ require_relative('../bar')
 class TestBar < Minitest::Test
 
     def setup()
-        @guest1 = Guest.new("Ben", 35, 50)
-        @guest2 = Guest.new("Alina", 32, 25)
-        @guest3 = Guest.new("Julien", 29, 9)
-        @guest4 = Guest.new("Dani", 29, 17)
-        @guest5 = Guest.new("Johanna", 24, 3)
+        @favourite_song1 = Song.new("Foo Fighters", "Learn to fly")
+        @favourite_song2 = Song.new("Bruce Springsteen", "Streets of Philadelphia")
+
         @song1 = Song.new("Foo Fighters", "Everlong")
         @song2 = Song.new("Rick Astley", "Never gonna give you up")
         @song3 = Song.new("Incubus", "Wish you were here")
         @song4 = Song.new("Blink182", "Aliens exist")
+
         @playlist = [@song1, @song2, @song3, @song4]
+
         @karaoke_room = Room.new("Room 1", @playlist, 3, 5)
+
+        @guest1 = Guest.new("Ben", 35, 50, @favourite_song1)
+        @guest2 = Guest.new("Alina", 32, 25, @song1)
+        @guest3 = Guest.new("Julien", 29, 9, @favourite_song2)
+        @guest4 = Guest.new("Dani", 29, 17, @song4)
+        @guest5 = Guest.new("Johanna", 24, 3, @song3)
+
         @bar = Bar.new("Sing City", 1000)
     end
 
