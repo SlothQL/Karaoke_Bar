@@ -19,8 +19,10 @@ class TestBar < Minitest::Test
         @song4 = Song.new("Blink182", "Aliens exist")
 
         @playlist = [@song1, @song2, @song3, @song4]
+        @playlist2 = [@favourite_song1, @favourite_song2, @song5]
 
         @karaoke_room = Room.new("Room 1", @playlist, 3, 5)
+        @karaoke_room_2 = Room.new("Room 2", @playlist2, 6, 3)
 
         @guest1 = Guest.new("Ben", 35, 50, @favourite_song1)
         @guest2 = Guest.new("Alina", 32, 25, @song1)
@@ -66,6 +68,13 @@ class TestBar < Minitest::Test
         assert_equal(20, @guest2.money)
         assert_equal(4, @guest3.money)
         assert_equal(17, @guest4.money)
+    end
+
+    def test_bar_has_total_earnings_for_each_room()
+        @bar.rent_room(@karaoke_room_2, @guest2)
+        @bar.rent_room(@karaoke_room_2, @guest3)
+        earnings = @bar.total_earnings(@karaoke_room_2)
+        assert_equal(6, earnings)
     end
 
 end

@@ -25,4 +25,9 @@ class Bar
         end
     end
 
+    def total_earnings(room)
+        total = 0
+        occupancy = room.count_guests()
+        return total = occupancy * room.entry_fee
+    end
 end
