@@ -18,11 +18,8 @@ class TestBar < Minitest::Test
         @song3 = Song.new("Incubus", "Wish you were here")
         @song4 = Song.new("Blink182", "Aliens exist")
 
-        @playlist = [@song1, @song2, @song3, @song4]
-        @playlist2 = [@favourite_song1, @favourite_song2, @song5]
-
-        @karaoke_room = Room.new("Room 1", @playlist, 3, 5)
-        @karaoke_room_2 = Room.new("Room 2", @playlist2, 6, 3)
+        @karaoke_room = Room.new("Room 1", 3, 5)
+        @karaoke_room_2 = Room.new("Room 2", 6, 3)
 
         @guest1 = Guest.new("Ben", 35, 50, @favourite_song1)
         @guest2 = Guest.new("Alina", 32, 25, @song1)

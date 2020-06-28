@@ -23,7 +23,7 @@ class Guest
         if room.is_song_in_playlist?(@favourite_song)
             return "Wohoo!" 
         else
-            return "We are sorrv but '#{@favourite_song.title}' is not in the playlist."
+            return "Oh no, '#{@favourite_song.title}' is not in the playlist."
         end
     end
 

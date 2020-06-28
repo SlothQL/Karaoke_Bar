@@ -18,9 +18,7 @@ class TestRoom < Minitest::Test
         @song4 = Song.new("Blink182", "Aliens exist")
         @song5 = Song.new("Eagles of Death Metal", "Wannabe in L.A.")
 
-        @playlist = [@song1, @song2, @song3, @song4]
-
-        @karaoke_room = Room.new("Room 1", @playlist, 3, 5)
+        @karaoke_room = Room.new("Room 1", 3, 5)
 
         @guest1 = Guest.new("Ben", 35, 50, @favourite_song1)
         @guest2 = Guest.new("Alina", 32, 25, @song1)
@@ -29,8 +27,10 @@ class TestRoom < Minitest::Test
         @guest5 = Guest.new("Johanna", 24, 3, @song3)
     end
 
-    def test_room_has_playlist()
-        assert_equal(4, @karaoke_room.count_songs())
+    def test_room_can_add_song()
+        @karaoke_room.add_songs(@song1)
+        @karaoke_room.add_songs(@song5)
+        assert_equal(2, @karaoke_room.count_songs())
     end
 
     def test_room_has_capacity()
@@ -67,16 +67,17 @@ class TestRoom < Minitest::Test
         assert_equal(1, @karaoke_room.count_guests())
     end
 
-    def test_room_can_add_song()
-        @karaoke_room.add_songs(@song5)
-        assert_equal(5, @karaoke_room.count_songs())
-    end
-
     def test_room_has_song_in_playlist_true()
+        @karaoke_room.add_songs(@song1)
+        @karaoke_room.add_songs(@song5)
+        @karaoke_room.add_songs(@song3)
         assert_equal(true, @karaoke_room.is_song_in_playlist?(@song3))
     end
 
     def test_room_has_song_in_playlist_false()
+        @karaoke_room.add_songs(@song1)
+        @karaoke_room.add_songs(@song4)
+        @karaoke_room.add_songs(@song3)
         assert_equal(false, @karaoke_room.is_song_in_playlist?(@song5))
     end
 

@@ -15,9 +15,7 @@ class TestGuest < Minitest::Test
         @song1 = Song.new("Foo Fighters", "Everlong")
         @song2 = Song.new("Rick Astley", "Never gonna give you up")
 
-        @playlist = [@song1, @song2]
-
-        @karaoke_room = Room.new("Room 1", @playlist, 3, 5)
+        @karaoke_room = Room.new("Room 1", 3, 5)
 
         @guest1 = Guest.new("Ben", 35, 50, @favourite_song1)
         @guest2 = Guest.new("Alina", 32, 25, @song1)
@@ -60,7 +58,7 @@ class TestGuest < Minitest::Test
 
     def test_favourite_song_is_in_playlist_true()
         fav_song = @guest1.favourite_song_in_room(@karaoke_room)
-        assert_equal("We are sorrv but 'Learn to fly' is not in the playlist.", fav_song)
+        assert_equal("Oh no, 'Learn to fly' is not in the playlist.", fav_song)
     end
 
 end
